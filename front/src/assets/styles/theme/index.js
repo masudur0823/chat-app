@@ -4,7 +4,8 @@ export const Colors = {
   white: "#fff",
   black: "#000",
   violet: "#6C63FF",
-  // primary: "#0080FF",
+  primary: "#001F2B",
+  lightGreen: "rgba(25, 235, 134, 0.83)",
 };
 
 const theme = createTheme({
@@ -23,16 +24,20 @@ const theme = createTheme({
     fontFamily: "Poppins, sans-serif",
   },
   palette: {
-    // primary: {
-    //   main: Colors.primary,
-    //   contrastText: Colors.white,
-    // },
+    primary: {
+      main: Colors.primary,
+      contrastText: Colors.white,
+    },
     violet: {
       main: Colors.violet,
       contrastText: Colors.white,
     },
     white: {
       main: Colors.black,
+      contrastText: Colors.white,
+    },
+    lightGreen: {
+      main: Colors.lightGreen,
       contrastText: Colors.white,
     },
   },

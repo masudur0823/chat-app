@@ -1,9 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import ContactTable from '../components/ContactTable';
-import EditContactDialog from '../components/EditContactDialog';
-import http from '../utils/http';
-import { Button, Dialog, TextField, DialogActions, DialogContent, DialogTitle, Select, MenuItem } from '@mui/material';
-import { useContacts } from '../context/ContactContext';
+import React, { useEffect, useState } from "react";
+import ContactTable from "../components/ContactTable";
+import EditContactDialog from "../components/EditContactDialog";
+import http from "../utils/http";
+import {
+  Button,
+  Dialog,
+  TextField,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Select,
+  MenuItem,
+  Box,
+} from "@mui/material";
+import { useContacts } from "../context/ContactContext";
+import { CustomButton } from "../assets/styles/contacts";
 
 function Contacts() {
   const { contacts, setContacts } = useContacts([]);
@@ -13,28 +24,28 @@ function Contacts() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalContacts, setTotalContacts] = useState(0);
 
-  const pageSize = 30; 
+  const pageSize = 30;
   const [newContact, setNewContact] = useState({
-    first_name: '',
-    last_name: '',
-    phoneNumber: '',
-    email: '',
-    channel: ''
+    first_name: "",
+    last_name: "",
+    phoneNumber: "",
+    email: "",
+    channel: "",
   });
 
   useEffect(() => {
-    http.get(`/contacts?page=${currentPage}&pageSize=${pageSize}`)
-      .then(response => {
-        console.log(JSON.stringify(response))
+    http
+      .get(`/contacts?page=${currentPage}&pageSize=${pageSize}`)
+      .then((response) => {
+        console.log(JSON.stringify(response));
         setContacts(response.data.contacts);
         setTotalContacts(response.data.totalCount);
       })
-      .catch(error => {
-        console.error('Error:', error);
-        alert('Failed to fetch contacts. Please try again later.');
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Failed to fetch contacts. Please try again later.");
       });
-  }, [setContacts,currentPage]);
-
+  }, [setContacts, currentPage]);
 
   const handleEdit = (contact) => {
     setSelectedContact(contact);
@@ -50,8 +61,8 @@ function Contacts() {
     try {
       await http.put(`/contacts/${updatedContact.id}`, updatedContact);
       // Update the contact in the contacts state
-      setContacts(prevContacts => {
-        return prevContacts.map(contact => {
+      setContacts((prevContacts) => {
+        return prevContacts.map((contact) => {
           if (contact.id === updatedContact.id) {
             return updatedContact;
           } else {
@@ -61,60 +72,92 @@ function Contacts() {
       });
       setDialogOpen(false);
     } catch (error) {
-      console.error('Error while updating contact:', error);
-      alert('Error while updating contact. Please try again.');
+      console.error("Error while updating contact:", error);
+      alert("Error while updating contact. Please try again.");
     }
   };
 
   const handleNewContactChange = (event) => {
     const { name, value } = event.target;
-    setNewContact(prevState => ({
+    setNewContact((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleAddContact = () => {
-    http.post('/contacts', newContact)
-      .then(response => {
+    http
+      .post("/contacts", newContact)
+      .then((response) => {
         // Refresh the contacts list
-        return http.get('/contacts');
+        return http.get("/contacts");
       })
-      .then(response => {
+      .then((response) => {
         const contactsData = response.data.contacts;
         setContacts(contactsData);
         setNewDialogOpen(false);
       })
-      .catch(error => console.error('Error:', error));
+      .catch((error) => console.error("Error:", error));
   };
 
   const handleDelete = async (contactId) => {
     try {
       await http.delete(`/contacts/${contactId}`);
       // Remove the contact from the contacts state without reloading
-      setContacts(prevContacts => prevContacts.filter(contact => contact.id !== contactId));
+      setContacts((prevContacts) =>
+        prevContacts.filter((contact) => contact.id !== contactId)
+      );
     } catch (error) {
-      console.error('Error while deleting contact:', error);
-      alert('Error while deleting contact. Please try again.');
+      console.error("Error while deleting contact:", error);
+      alert("Error while deleting contact. Please try again.");
     }
   };
 
   return (
     <div>
-      <h1>Contacts</h1>
-      <Button color="primary" variant="contained" onClick={() => setNewDialogOpen(true)}>
+      {/* <Button
+        color="primary"
+        variant="contained"
+        onClick={() => setNewDialogOpen(true)}
+      >
         Add Contact
-      </Button>
-      <ContactTable contacts={contacts} totalContacts={totalContacts} onEdit={handleEdit} onDelete={handleDelete} page={currentPage} setPage={setCurrentPage} pageSize={pageSize} />
-      {selectedContact && <EditContactDialog open={dialogOpen} handleClose={handleDialogClose} contact={selectedContact} 
-      handleSave={handleSave}  page={currentPage}  setPage={setCurrentPage} pageSize={pageSize} />}
+      </Button> */}
+      <Box textAlign="end" pb={3}>
+        <CustomButton
+          color="lightGreen"
+          variant="contained"
+          onClick={() => setNewDialogOpen(true)}
+        >
+          Add
+        </CustomButton>
+      </Box>
+      <ContactTable
+        contacts={contacts}
+        totalContacts={totalContacts}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+        page={currentPage}
+        setPage={setCurrentPage}
+        pageSize={pageSize}
+      />
+      {selectedContact && (
+        <EditContactDialog
+          open={dialogOpen}
+          handleClose={handleDialogClose}
+          contact={selectedContact}
+          handleSave={handleSave}
+          page={currentPage}
+          setPage={setCurrentPage}
+          pageSize={pageSize}
+        />
+      )}
 
       <Dialog open={newDialogOpen} onClose={() => setNewDialogOpen(false)}>
         <DialogTitle>Add New Contact</DialogTitle>
-        <DialogContent> 
+        <DialogContent>
           <TextField
             autoFocus
-            margin="dense" 
+            margin="dense"
             name="first_name"
             label="First Name"
             type="text"
