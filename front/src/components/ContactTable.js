@@ -1,9 +1,28 @@
-import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, IconButton,TableFooter,TablePagination } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import React from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton,
+  TableFooter,
+  TablePagination,
+} from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-function ContactTable({ contacts, onEdit, onDelete, page, setPage, pageSize,totalContacts  }) {
+function ContactTable({
+  contacts,
+  onEdit,
+  onDelete,
+  page,
+  setPage,
+  pageSize,
+  totalContacts,
+}) {
   //console.log("CONTACTS ==> " + JSON.stringify(contacts));
   const handleEditClick = (contact) => {
     onEdit(contact);
@@ -42,7 +61,7 @@ function ContactTable({ contacts, onEdit, onDelete, page, setPage, pageSize,tota
           {contacts.map((contact) => (
             <TableRow
               key={contact.id}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
                 {contact.first_name}
@@ -53,7 +72,7 @@ function ContactTable({ contacts, onEdit, onDelete, page, setPage, pageSize,tota
               <TableCell>{contact.channel}</TableCell>
               <TableCell>{contact.source}</TableCell>
               <TableCell>{contact?.users?.username}</TableCell>
-              <TableCell> 
+              <TableCell>
                 <IconButton onClick={() => handleEditClick(contact)}>
                   <EditIcon />
                 </IconButton>
@@ -66,16 +85,18 @@ function ContactTable({ contacts, onEdit, onDelete, page, setPage, pageSize,tota
         </TableBody>
         <TableFooter>
           <TableRow>
-          <TablePagination
-  rowsPerPageOptions={[30, 50, 100]}
-  component="div"
-  count={totalContacts} // Make sure you pass the total number of contacts from your API to the ContactTable and use it here
-  rowsPerPage={pageSize}
-  page={page - 1}
-  onPageChange={handleChangePage}
-  onRowsPerPageChange={handleChangeRowsPerPage}
-  labelDisplayedRows={({ from, to, count }) => `${from}-${to} of ${count}`}
-/>
+            <TablePagination
+              rowsPerPageOptions={[30, 50, 100]}
+              component="div"
+              count={totalContacts} // Make sure you pass the total number of contacts from your API to the ContactTable and use it here
+              rowsPerPage={pageSize}
+              page={page - 1}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              labelDisplayedRows={({ from, to, count }) =>
+                `${from}-${to} of ${count}`
+              }
+            />
           </TableRow>
         </TableFooter>
       </Table>

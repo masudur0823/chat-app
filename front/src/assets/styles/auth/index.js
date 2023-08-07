@@ -112,7 +112,12 @@ export const AuthImage = styled("img")(({ src, theme }) => ({
 }));
 
 export const AuthLeftBox = styled(Box)(({ theme }) => ({
-  maxWidth: "353px",
+  width: "353px",
+  [theme.breakpoints.down("s_md")]: {
+    width: "initial",
+    maxWidth:'270px'
+  }
+
 }));
 
 export const AuthInputBox = styled(Box)(({ theme }) => ({

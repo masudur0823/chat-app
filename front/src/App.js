@@ -207,10 +207,11 @@ function App() {
                 path="/settings"
                 element={<PrivateWrapper element={<Settings />} />}
               />
-              <Route
+              {/* <Route
                 path="/contacts"
                 element={<PrivateWrapper element={<Contacts />} />}
-              />
+              /> */}
+              <Route path="/contacts" element={<Contacts />} />
               <Route
                 path="/numbers"
                 element={
