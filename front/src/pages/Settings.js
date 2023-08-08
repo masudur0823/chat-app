@@ -56,7 +56,6 @@ function Settings() {
 
   return (
     <div>
-      <h1>Settings</h1>
       <Box component="div" marginBottom="1em">
         <FormControlLabel
           control={<Switch checked={isOwnerView === 'yes'} onChange={handleOwnerViewChange} />}
