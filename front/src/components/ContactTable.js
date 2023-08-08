@@ -1,18 +1,20 @@
 import React from "react";
+// import EditIcon from "@mui/icons-material/Edit";
+// import DeleteIcon from "@mui/icons-material/Delete";
+import { TableContainerBox } from "../assets/styles/table";
 import {
+  PaginationItem,
+  Stack,
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TableRow,
-  Paper,
-  IconButton,
-  TableFooter,
-  TablePagination,
 } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { CustomButton } from "../assets/styles/contacts";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { CustomPagination } from "../assets/styles/table/pagination";
 
 function ContactTable({
   contacts,
@@ -42,8 +44,21 @@ function ContactTable({
     // This could also reload the data if needed
   };
 
+  // pagination -------------------------
+  // -----------------------------------
+  const [currentPage, setCurrentPage] = React.useState(0);
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page - 1);
+  };
+
+  const itemsPerPage = 10; // Number of items to display per page
+  const offset = currentPage * itemsPerPage;
+  const currentPageData = contacts.slice(offset, offset + itemsPerPage);
+  const pageCount = Math.ceil(contacts.length / itemsPerPage);
+
   return (
-    <TableContainer component={Paper}>
+    <>
+      {/* <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -100,7 +115,76 @@ function ContactTable({
           </TableRow>
         </TableFooter>
       </Table>
-    </TableContainer>
+    </TableContainer> */}
+      <TableContainerBox>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>First Name</TableCell>
+              <TableCell>Last Name</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Telephone</TableCell>
+              <TableCell>Channel</TableCell>
+              <TableCell>Source</TableCell>
+              <TableCell>Owner</TableCell>
+              <TableCell>Actions</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {currentPageData.map((contact) => (
+              <TableRow key={contact.id}>
+                <TableCell>{contact.first_name}</TableCell>
+                <TableCell>{contact.last_name}</TableCell>
+                <TableCell>{contact.email}</TableCell>
+                <TableCell>{contact.tel}</TableCell>
+                <TableCell>{contact.channel}</TableCell>
+                <TableCell>{contact.source}</TableCell>
+                <TableCell>{contact?.users?.username}</TableCell>
+                <TableCell>
+                  <Stack direction="row" gap={2}>
+                    <CustomButton
+                      variant="contained"
+                      color="lightBlue"
+                      onClick={() => handleEditClick(contact)}
+                    >
+                      Edit
+                    </CustomButton>
+                    <CustomButton
+                      variant="contained"
+                      color="lightRed"
+                      onClick={() => handleDeleteClick(contact.id)}
+                    >
+                      Delete
+                    </CustomButton>
+                  </Stack>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainerBox>
+
+      {/* <Pagination
+        count={pageCount - 1}
+        onChange={handlePageChange}
+        color="primary"
+        siblingCount={0}
+      /> */}
+      <Stack alignItems={'flex-end'}>
+        <CustomPagination
+          count={pageCount}
+          onChange={handlePageChange}
+          color="lightGrey"
+          siblingCount={0}
+          renderItem={(item) => (
+            <PaginationItem
+              slots={{ previous: ArrowBackIosIcon, next: ArrowForwardIosIcon }}
+              {...item}
+            />
+          )}
+        />
+      </Stack>
+    </>
   );
 }
 

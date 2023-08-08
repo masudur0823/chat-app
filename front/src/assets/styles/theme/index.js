@@ -6,6 +6,9 @@ export const Colors = {
   violet: "#6C63FF",
   primary: "#001F2B",
   lightGreen: "rgba(25, 235, 134, 0.83)",
+  lightBlue: "rgba(20, 133, 255, 0.83)",
+  lightRed: "rgba(235, 25, 25, 0.83)",
+  lightGrey:'#F4F8FA'
 };
 
 const theme = createTheme({
@@ -39,6 +42,17 @@ const theme = createTheme({
     lightGreen: {
       main: Colors.lightGreen,
       contrastText: Colors.white,
+    },
+    lightBlue: {
+      main: Colors.lightBlue,
+      contrastText: Colors.white,
+    },
+    lightRed: {
+      main: Colors.lightRed,
+      contrastText: Colors.white,
+    },
+    lightGrey: {
+      main: Colors.lightGrey,
     },
   },
   components: {

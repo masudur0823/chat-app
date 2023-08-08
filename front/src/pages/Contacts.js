@@ -33,19 +33,392 @@ function Contacts() {
     channel: "",
   });
 
+  // useEffect(() => {
+  //   http
+  //     .get(`/contacts?page=${currentPage}&pageSize=${pageSize}`)
+  //     .then((response) => {
+  //       console.log(JSON.stringify(response));
+  //       setContacts(response.data.contacts);
+  //       setTotalContacts(response.data.totalCount);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //       alert("Failed to fetch contacts. Please try again later.");
+  //     });
+  // }, [setContacts, currentPage]);
+
   useEffect(() => {
-    http
-      .get(`/contacts?page=${currentPage}&pageSize=${pageSize}`)
-      .then((response) => {
-        console.log(JSON.stringify(response));
-        setContacts(response.data.contacts);
-        setTotalContacts(response.data.totalCount);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("Failed to fetch contacts. Please try again later.");
-      });
-  }, [setContacts, currentPage]);
+    const dummyValue = [
+      {
+        first_name: "Kazi",
+        last_name: "Masud",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Soikot",
+        last_name: "Saha",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajimd",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Soikot",
+        last_name: "Saha",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajimd",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Soikot",
+        last_name: "Saha",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajimd",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Soikot",
+        last_name: "Saha",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajimd",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Soikot",
+        last_name: "Saha",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajimd",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Soikot",
+        last_name: "Saha",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajim",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajimc",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajims",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajims",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+      {
+        first_name: "Tajimd",
+        last_name: "Ahmed",
+        phoneNumber: "01980573601",
+        email: "masud@gmail.com",
+      },
+    ]
+    setContacts(dummyValue);
+    setTotalContacts(dummyValue.length)
+  }, [setContacts]);
 
   const handleEdit = (contact) => {
     setSelectedContact(contact);
