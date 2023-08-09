@@ -13,7 +13,7 @@ function Layout() {
       </Box>
       <Box className="right">
         <Header />
-        <Box p={{md:3, xs:2}}>
+        <Box p={{md:4, xs:2}}>
           <Outlet />
         </Box>
       </Box>

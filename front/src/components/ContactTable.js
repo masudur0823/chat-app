@@ -3,6 +3,7 @@ import React from "react";
 // import DeleteIcon from "@mui/icons-material/Delete";
 import { TableContainerBox } from "../assets/styles/table";
 import {
+  Box,
   PaginationItem,
   Stack,
   Table,
@@ -51,13 +52,13 @@ function ContactTable({
     setCurrentPage(page - 1);
   };
 
-  const itemsPerPage = 10; // Number of items to display per page
+  const itemsPerPage = 6; // Number of items to display per page
   const offset = currentPage * itemsPerPage;
   const currentPageData = contacts.slice(offset, offset + itemsPerPage);
   const pageCount = Math.ceil(contacts.length / itemsPerPage);
 
   return (
-    <>
+    <Box>
       {/* <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
@@ -116,6 +117,7 @@ function ContactTable({
         </TableFooter>
       </Table>
     </TableContainer> */}
+
       <TableContainerBox>
         <Table>
           <TableHead>
@@ -127,7 +129,7 @@ function ContactTable({
               <TableCell>Channel</TableCell>
               <TableCell>Source</TableCell>
               <TableCell>Owner</TableCell>
-              <TableCell>Actions</TableCell>
+              <TableCell sx={{textAlign:'center'}}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -164,13 +166,7 @@ function ContactTable({
         </Table>
       </TableContainerBox>
 
-      {/* <Pagination
-        count={pageCount - 1}
-        onChange={handlePageChange}
-        color="primary"
-        siblingCount={0}
-      /> */}
-      <Stack alignItems={'flex-end'}>
+      <Stack alignItems={"flex-end"}>
         <CustomPagination
           count={pageCount}
           onChange={handlePageChange}
@@ -184,7 +180,7 @@ function ContactTable({
           )}
         />
       </Stack>
-    </>
+    </Box>
   );
 }
 

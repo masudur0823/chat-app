@@ -11,22 +11,26 @@ import LogoutIcon from "@mui/icons-material/Logout";
 function Sidebar() {
   const menuList = [
     {
-      icon: <ChatBubbleOutlineIcon sx={{ fontSize: "35px" }} />,
+      icon: (
+        <ChatBubbleOutlineIcon
+          sx={{ fontSize: { s_xl: 35, sm: 25, xs: 18 } }}
+        />
+      ),
       path: "/",
       label: "Chat",
     },
     {
-      icon: <ContactsIcon sx={{ fontSize: "35px" }} />,
+      icon: <ContactsIcon sx={{ fontSize: { s_xl: 35, sm: 25, xs: 18 } }} />,
       path: "/contacts",
       label: "Contacts",
     },
     {
-      icon: <PersonIcon sx={{ fontSize: "40px" }} />,
+      icon: <PersonIcon sx={{ fontSize: { s_xl: 35, sm: 25, xs: 22 } }} />,
       path: "/integrations",
       label: "Integrations",
     },
     {
-      icon: <SettingsIcon sx={{ fontSize: "35px" }} />,
+      icon: <SettingsIcon sx={{ fontSize: { s_xl: 35, sm: 25, xs: 18 } }} />,
       path: "/settings",
       label: "Settings",
     },
@@ -59,7 +63,7 @@ function Sidebar() {
       </ListMain>
       <ListMain>
         <Box className="logout">
-          <LogoutIcon sx={{ fontSize: "35px" }} />
+          <LogoutIcon sx={{ fontSize: { s_xl: 35, sm: 25, xs: 18 } }} />
         </Box>
       </ListMain>
     </SidebarBox>

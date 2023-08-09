@@ -415,9 +415,9 @@ function Contacts() {
         phoneNumber: "01980573601",
         email: "masud@gmail.com",
       },
-    ]
+    ];
     setContacts(dummyValue);
-    setTotalContacts(dummyValue.length)
+    setTotalContacts(dummyValue.length);
   }, [setContacts]);
 
   const handleEdit = (contact) => {
@@ -487,7 +487,7 @@ function Contacts() {
   };
 
   return (
-    <div>
+    <Box>
       {/* <Button
         color="primary"
         variant="contained"
@@ -495,24 +495,26 @@ function Contacts() {
       >
         Add Contact
       </Button> */}
-      <Box textAlign="end" pb={3}>
-        <CustomButton
-          color="lightGreen"
-          variant="contained"
-          onClick={() => setNewDialogOpen(true)}
-        >
-          Add
-        </CustomButton>
+      <Box sx={{ padding: { s_xl: "0px 50px" } }}>
+        <Box textAlign="end" pb={3}>
+          <CustomButton
+            color="lightGreen"
+            variant="contained"
+            onClick={() => setNewDialogOpen(true)}
+          >
+            Add
+          </CustomButton>
+        </Box>
+        <ContactTable
+          contacts={contacts}
+          totalContacts={totalContacts}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          page={currentPage}
+          setPage={setCurrentPage}
+          pageSize={pageSize}
+        />
       </Box>
-      <ContactTable
-        contacts={contacts}
-        totalContacts={totalContacts}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
-        page={currentPage}
-        setPage={setCurrentPage}
-        pageSize={pageSize}
-      />
       {selectedContact && (
         <EditContactDialog
           open={dialogOpen}
@@ -586,7 +588,7 @@ function Contacts() {
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </Box>
   );
 }
 

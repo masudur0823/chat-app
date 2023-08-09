@@ -1,6 +1,6 @@
 import { Pagination, styled } from "@mui/material";
 
-export const CustomPagination = styled(Pagination)(() => ({
+export const CustomPagination = styled(Pagination)(({theme}) => ({
   padding: "50px 0px 30px 0px",
   li: {
     button: {
@@ -26,4 +26,8 @@ export const CustomPagination = styled(Pagination)(() => ({
       },
     },
   },
+  [theme.breakpoints.down("s_xl")]: {
+    padding: "30px 0px 30px 0px",
+  }
+
 }));
