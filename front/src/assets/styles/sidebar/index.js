@@ -3,7 +3,7 @@ import { Box, styled } from "@mui/material";
 export const SidebarBox = styled(Box)(({ theme }) => ({
   ".logoContainer": {
     height: "115px",
-    borderBottom: "1px solid #DDE6EB",
+    // borderBottom: "1px solid #DDE6EB",
     background: "linear-gradient(45deg, #07F 0%, #7DD2FF 100%)",
     ".logoName": {
       fontSize: "45px",
@@ -21,9 +21,25 @@ export const SidebarBox = styled(Box)(({ theme }) => ({
       },
     },
   },
+  [theme.breakpoints.down("s_md")]: {
+    ".logoContainer": {
+      height: "60px",
+      ".logoName": {
+        fontSize: "30px",
+      },
+    },
+  },
+  [theme.breakpoints.down("sm")]: {
+    ".logoContainer": {
+      height: "50px",
+      ".logoName": {
+        fontSize: "25px",
+      },
+    },
+  },
 }));
 
-export const ListMain = styled(Box)(({theme}) => ({
+export const ListMain = styled(Box)(({ theme }) => ({
   padding: "30px 0px",
   display: "flex",
   flexDirection: "column",
@@ -63,16 +79,15 @@ export const ListMain = styled(Box)(({theme}) => ({
     ".logout": {
       width: "40px",
       height: "40px",
-      borderRadius: "4px"
+      borderRadius: "4px",
     },
   },
-  
+
   [theme.breakpoints.down("sm")]: {
     ".logout": {
       width: "28px",
       height: "30px",
-      borderRadius: "4px"
+      borderRadius: "4px",
     },
-  }
-
+  },
 }));

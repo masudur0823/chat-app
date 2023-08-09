@@ -1,7 +1,6 @@
-import { Box, TableContainer, styled } from "@mui/material";
+import { TableContainer, styled } from "@mui/material";
 
-export const TableContainerBox = styled(Box)(({ theme }) => ({
-  overflowX:'auto',
+export const TableContainerBox = styled(TableContainer)(({ theme }) => ({
   th: {
     padding: "10px 20px",
     color: "#000",

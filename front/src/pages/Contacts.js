@@ -14,7 +14,7 @@ import {
   Box,
 } from "@mui/material";
 import { useContacts } from "../context/ContactContext";
-import { CustomButton } from "../assets/styles/contacts";
+import { CustomButton } from "../assets/styles/buttons";
 
 function Contacts() {
   const { contacts, setContacts } = useContacts([]);

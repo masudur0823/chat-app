@@ -1,6 +1,6 @@
 import { Box, styled } from "@mui/material";
 
-export const HeaderBox = styled(Box)(({theme}) => ({
+export const HeaderBox = styled(Box)(({ theme }) => ({
   height: "115px",
   borderBottom: "1px solid #DDE6EB",
   display: "flex",
@@ -16,6 +16,15 @@ export const HeaderBox = styled(Box)(({theme}) => ({
     p: {
       fontSize: "30px",
     },
-  }
-
+  },
+  [theme.breakpoints.down("s_md")]: {
+    height: "60px",
+    paddingLeft: "20px",
+    p: {
+      fontSize: "22px",
+    },
+  },
+  [theme.breakpoints.down("sm")]: {
+    height: "50px",
+  },
 }));

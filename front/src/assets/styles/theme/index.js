@@ -1,10 +1,11 @@
 import { createTheme } from "@mui/material";
 
 export const Colors = {
+  primary: "#001F2B",
   white: "#fff",
   black: "#000",
   violet: "#6C63FF",
-  primary: "#001F2B",
+  yellow:'#FFD233',
   lightGreen: "rgba(25, 235, 134, 0.83)",
   lightBlue: "rgba(20, 133, 255, 0.83)",
   lightRed: "rgba(235, 25, 25, 0.83)",
@@ -38,6 +39,9 @@ const theme = createTheme({
     white: {
       main: Colors.black,
       contrastText: Colors.white,
+    },
+    yellow:{
+      main: Colors.yellow,
     },
     lightGreen: {
       main: Colors.lightGreen,

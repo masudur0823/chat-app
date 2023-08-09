@@ -12,10 +12,10 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { CustomButton } from "../assets/styles/contacts";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { CustomPagination } from "../assets/styles/table/pagination";
+import { CustomButton } from "../assets/styles/buttons";
 
 function ContactTable({
   contacts,
@@ -133,8 +133,8 @@ function ContactTable({
             </TableRow>
           </TableHead>
           <TableBody>
-            {currentPageData.map((contact) => (
-              <TableRow key={contact.id}>
+            {currentPageData.map((contact, index) => (
+              <TableRow key={index}>
                 <TableCell>{contact.first_name}</TableCell>
                 <TableCell>{contact.last_name}</TableCell>
                 <TableCell>{contact.email}</TableCell>
