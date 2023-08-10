@@ -1,13 +1,12 @@
-import { Box, Divider, styled } from "@mui/material";
+import { Box, Divider, FormControlLabel, styled } from "@mui/material";
 
 export const CustomDivider = styled(Divider)(({ theme }) => ({
-  margin:'30px 0px',
-  width:'70%',
+  margin: "30px 0px",
+  width: "70%",
   [theme.breakpoints.down("lg")]: {
-    width:'100%',
-  }
-
-}))
+    width: "100%",
+  },
+}));
 
 export const SettingsDynamoBox = styled(Box)(({ theme }) => ({
   h4: {
@@ -76,5 +75,56 @@ export const SettingsDynamoBox = styled(Box)(({ theme }) => ({
     textarea: {
       width: "100%",
     },
+  },
+}));
+
+export const CustomFormControlLabel = styled(FormControlLabel)(() => ({
+  "& .MuiSwitch-root": {
+    width: "92px",
+    height: "50px",
+    // border:'1px solid #1485FF',
+    "& .MuiButtonBase-root": {
+      top: 4,
+      left: 4,
+      "&:hover": {
+        backgroundColor: "transparent",
+      },
+    },
+    "& .MuiButtonBase-root.Mui-checked ": {
+      left: 1,
+    },
+    "& .MuiButtonBase-root.Mui-disabled ": {
+      opacity: "0.5",
+    },
+    "& .MuiSwitch-track": {
+      opacity: 1,
+      backgroundColor: "transparent",
+      border: "1px solid #1485FF",
+      borderRadius: "20px",
+    },
+    "& .Mui-checked": {
+      transform: "translateX(42px)",
+      "& + .MuiSwitch-track": {
+        opacity: 1,
+        backgroundColor: "transparent",
+        border: "1px solid #1485FF",
+      },
+
+      "&.Mui-disabled + .MuiSwitch-track": {
+        opacity: 0.5,
+      },
+      "&:hover": {
+        backgroundColor: "transparent",
+      },
+    },
+    "& .MuiSwitch-thumb": {
+      width: 27,
+      height: 26,
+      backgroundColor: "rgba(25, 235, 134, 0.83)", // Set the background color of the switch thumb
+    },
+  },
+  span: {
+    color: "#001F2B",
+    fontSize: 20,
   },
 }));

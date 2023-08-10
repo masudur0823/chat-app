@@ -9,11 +9,18 @@ import {
   Select,
   MenuItem,
   Box,
+  Typography,
+  Stack,
+  useMediaQuery,
 } from "@mui/material";
 import SettingsDynamo from "../components/SettingsDynamo";
-import { CustomDivider } from "../assets/styles/settings";
+import {
+  CustomDivider,
+  CustomFormControlLabel,
+} from "../assets/styles/settings";
 
 function Settings() {
+  const matches = useMediaQuery("(max-width:600px)");
   const [isOwnerView, setIsOwnerView] = useState("no");
   const [communicationMode, setCommunicationMode] = useState("Unofficial");
   const [asignacion, setAsignacion] = useState(""); // Initialize asignacion state
@@ -111,35 +118,68 @@ function Settings() {
         addTitle="New Quick Answer"
       />
       <CustomDivider />
-      
-      <Box component="div" marginBottom="1em">
-        <FormControlLabel
+
+      <CustomFormControlLabel
+        control={
+          <Switch
+            disableRipple
+            checked={isOwnerView === "yes"}
+            onChange={handleOwnerViewChange}
+          />
+        }
+        label="Agent view only owned chats"
+      />
+
+      <CustomDivider />
+
+      <Typography
+        variant="h4"
+        color="primary"
+        sx={{ fontSize: { sm: 25, xs: 22 }, fontWeight: 600 }}
+        pb={{ sm: 2, xs: 1 }}
+      >
+        Integration Whatsapp
+      </Typography>
+
+      <Stack direction="row" alignItems="center">
+        <Typography
+          sx={{ color: "#001F2B", fontSize: 20, display: matches && "none" }}
+        >
+          Unofficial
+        </Typography>
+        <CustomFormControlLabel
+          sx={{ margin: { sm: "0px" } }}
           control={
             <Switch
-              checked={isOwnerView === "yes"}
-              onChange={handleOwnerViewChange}
-            />
-          }
-          label="Agent view only owned chats"
-        />
-      </Box>
-      <Box component="div" marginBottom="1em">
-        <h2>Integration Whatsapp</h2>
-        <FormControlLabel
-          control={
-            <Switch
+              disableRipple
               checked={communicationMode === "Official"}
               onChange={handleCommunicationModeChange}
             />
           }
-          label={communicationMode}
+          label={matches && communicationMode}
         />
-      </Box>
-      <Box component="div" marginBottom="1em">
-        <h2>Asignacion</h2>
+        <Typography
+          sx={{ color: "#001F2B", fontSize: 20, display: matches && "none" }}
+        >
+          Official
+        </Typography>
+      </Stack>
+
+      <CustomDivider />
+
+      <Box mb={3}>
+        <Typography
+          variant="h4"
+          color="primary"
+          sx={{ fontSize: { sm: 25, xs: 22 }, fontWeight: 600 }}
+          pb={{ sm: 2, xs: 1 }}
+        >
+          Integration Whatsapp
+        </Typography>
         <FormControl fullWidth sx={{ width: "200px" }}>
           <InputLabel id="asignacion-label">Asignacion</InputLabel>
           <Select
+            label="Asignacion"
             labelId="asignacion-label"
             value={asignacion}
             onChange={handleAsignacionChange}
@@ -150,6 +190,7 @@ function Settings() {
           </Select>
         </FormControl>
       </Box>
+
       <Button variant="contained" onClick={handleSaveSettings}>
         Save Settings
       </Button>
