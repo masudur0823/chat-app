@@ -29,6 +29,7 @@ import io from "socket.io-client"; // import io
 import jwt_decode from "jwt-decode";
 import http from "./utils/http";
 import Layout from "./components/Layout/Layout";
+import ChatLayout from "./components/Layout/ChatLayout";
 
 const PrivateWrapper = ({ element, requiredRole }) => {
   const { isAuthenticated } = React.useContext(AuthContext);
@@ -115,8 +116,11 @@ function App() {
                 path="/contacts"
                 element={<PrivateWrapper element={<Contacts />} />}
               /> */}
-              <Route element={<Layout />}>
+              <Route element={<ChatLayout />}>
                 <Route index path="/" element={<Chat />} />
+              </Route>
+
+              <Route element={<Layout />}>
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/contacts" s element={<Contacts />} />
                 <Route path="/integrations" element={<Integrations />} />

@@ -13,7 +13,6 @@ function ContactList({ setSelectedContactId, selectedContactId, contacts , setCo
 
   useEffect(() => {
     const handleScroll = (e) => {
-      
         const { scrollTop, clientHeight, scrollHeight } = e.currentTarget;
         if (scrollHeight - scrollTop <= clientHeight + threshold && !isLoading) {
           loadMoreContacts();
