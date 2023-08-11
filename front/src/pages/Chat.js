@@ -67,6 +67,9 @@ function Chat() {
     };
   }, [selectedContactId, socket, contacts]);
 
+
+  // dummy conatcts start
+  // ----------------------------------
   useEffect(() => {
     setContacts([
       {
@@ -220,6 +223,8 @@ function Chat() {
       },
     ]);
   }, []);
+  // dummy conatcts end
+  // ----------------------------------
 
   const fetchContacts = (page) => {
     setIsLoading(true);

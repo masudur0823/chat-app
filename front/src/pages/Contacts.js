@@ -33,19 +33,22 @@ function Contacts() {
     channel: "",
   });
 
-  // useEffect(() => {
-  //   http
-  //     .get(`/contacts?page=${currentPage}&pageSize=${pageSize}`)
-  //     .then((response) => {
-  //       console.log(JSON.stringify(response));
-  //       setContacts(response.data.contacts);
-  //       setTotalContacts(response.data.totalCount);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //       alert("Failed to fetch contacts. Please try again later.");
-  //     });
-  // }, [setContacts, currentPage]);
+  useEffect(() => {
+    http
+      .get(`/contacts?page=${currentPage}&pageSize=${pageSize}`)
+      .then((response) => {
+        console.log(JSON.stringify(response));
+        setContacts(response.data.contacts);
+        setTotalContacts(response.data.totalCount);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Failed to fetch contacts. Please try again later.");
+      });
+  }, [setContacts, currentPage]);
+
+  // dummy contacts 
+  // ----------------------------
 
   useEffect(() => {
     const dummyValue = [
@@ -419,6 +422,9 @@ function Contacts() {
     setContacts(dummyValue);
     setTotalContacts(dummyValue.length);
   }, [setContacts]);
+
+    // dummy contacts 
+  // ----------------------------
 
   const handleEdit = (contact) => {
     setSelectedContact(contact);
