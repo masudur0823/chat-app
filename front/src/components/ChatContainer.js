@@ -78,13 +78,6 @@ function ChatContainer({ contact }) {
         channel: "ddd1",
         createdAt: "2023-08-11T12:00",
       },
-      {
-        text: "yea, niceyea, nice yea, nice  nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic ",
-        incoming: true,
-        contactId: 1233,
-        channel: "ddd1",
-        createdAt: "2023-08-11T12:00",
-      },
     ]);
   }, []);
   // dummy messages start

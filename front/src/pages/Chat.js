@@ -67,7 +67,6 @@ function Chat() {
     };
   }, [selectedContactId, socket, contacts]);
 
-
   // dummy conatcts start
   // ----------------------------------
   useEffect(() => {
@@ -130,96 +129,6 @@ function Chat() {
           "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.\n\nPhasellus in felis. Donec semper sapien a libero. Nam dui.",
         lastMessageDate: "6/26/2023",
         unreadCount: 4,
-      },
-      {
-        id: 5,
-        first_name: "Ermin",
-        last_name: "Chinery",
-        email: "echinery4@amazon.de",
-        phone: "+86 211 366 3817",
-        amount: 642,
-        get name() {
-          return `${this.first_name} ${this.last_name}`;
-        },
-        lastMessage:
-          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-        lastMessageDate: "2/27/2023",
-        unreadCount: 5,
-      },
-      {
-        id: 5,
-        first_name: "Ermin",
-        last_name: "Chinery",
-        email: "echinery4@amazon.de",
-        phone: "+86 211 366 3817",
-        amount: 642,
-        get name() {
-          return `${this.first_name} ${this.last_name}`;
-        },
-        lastMessage:
-          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-        lastMessageDate: "2/27/2023",
-        unreadCount: 5,
-      },
-      {
-        id: 5,
-        first_name: "Ermin",
-        last_name: "Chinery",
-        email: "echinery4@amazon.de",
-        phone: "+86 211 366 3817",
-        amount: 642,
-        get name() {
-          return `${this.first_name} ${this.last_name}`;
-        },
-        lastMessage:
-          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-        lastMessageDate: "2/27/2023",
-        unreadCount: 5,
-      },
-      {
-        id: 5,
-        first_name: "Ermin",
-        last_name: "Chinery",
-        email: "echinery4@amazon.de",
-        phone: "+86 211 366 3817",
-        amount: 642,
-        get name() {
-          return `${this.first_name} ${this.last_name}`;
-        },
-        lastMessage:
-          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-        lastMessageDate: "2/27/2023",
-        unreadCount: 5,
-      },
-      {
-        id: 5,
-        first_name: "Ermin",
-        last_name: "Chinery",
-        email: "echinery4@amazon.de",
-        phone: "+86 211 366 3817",
-        amount: 642,
-        get name() {
-          return `${this.first_name} ${this.last_name}`;
-        },
-        lastMessage:
-          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-        lastMessageDate: "2/27/2023",
-        unreadCount: 5,
-      },
-      {
-        id: 5,
-        first_name: "Ermin",
-        last_name: "Chinery",
-        email: "echinery4@amazon.de",
-        phone: "+86 211 366 3817",
-        amount: 642,
-        get name() {
-          return `${this.first_name} ${this.last_name}`;
-        },
-        lastMessage:
-          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
-        lastMessageDate: "2/27/2023",
-        unreadCount: 5,
       },
     ]);
   }, []);
