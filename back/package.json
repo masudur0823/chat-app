@@ -14,8 +14,5 @@
     "sequelize": "^6.32.1",
     "socket.io": "^4.7.1",
     "whatsapp-web.js": "^1.21.0"
-  },
-  "scripts": {
-    "start": "nodemon server.js"
   }
 }
