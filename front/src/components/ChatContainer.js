@@ -1,11 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
-import { TextField, IconButton, Avatar } from "@mui/material";
+import {
+  TextField,
+  IconButton,
+  Avatar,
+  Box,
+  Button,
+  InputBase,
+  Typography,
+} from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import http from "../utils/http";
 import { formatDate } from "../helpers/dateHelpers";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
+import { CustomButton2 } from "../assets/styles/buttons";
 
 function ChatContainer({ contact }) {
   const [message, setMessage] = useState("");
@@ -15,6 +24,71 @@ function ChatContainer({ contact }) {
   const messagesEndRef = useRef(null);
   const messagesContainerRef = useRef(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
+  // dummy messages start
+  // ------------------------
+  useEffect(() => {
+    setMessages([
+      {
+        text: "hi boss",
+        incoming: false,
+        contactId: 1234,
+        channel: "ddd1",
+        createdAt: "2023-08-10T12:00",
+      },
+      {
+        text: "hi boss",
+        incoming: false,
+        contactId: 1234,
+        channel: "ddd1",
+        createdAt: "2023-08-11T12:00",
+      },
+      {
+        text: "yea",
+        incoming: true,
+        contactId: 1233,
+        channel: "ddd1",
+        createdAt: "2023-08-11T12:00",
+      },
+      {
+        text: "How are you?",
+        incoming: true,
+        contactId: 1233,
+        channel: "ddd1",
+        createdAt: "2023-08-11T12:00",
+      },
+      {
+        text: "good, Dit you see the project?",
+        incoming: false,
+        contactId: 1234,
+        channel: "ddd1",
+        createdAt: "2023-08-11T12:00",
+      },
+      {
+        text: "is everything is ok",
+        incoming: false,
+        contactId: 1234,
+        channel: "ddd1",
+        createdAt: "2023-08-11T12:00",
+      },
+      {
+        text: "yea, nice",
+        incoming: true,
+        contactId: 1233,
+        channel: "ddd1",
+        createdAt: "2023-08-11T12:00",
+      },
+      {
+        text: "yea, niceyea, nice yea, nice  nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic   nice yea, nic ",
+        incoming: true,
+        contactId: 1233,
+        channel: "ddd1",
+        createdAt: "2023-08-11T12:00",
+      },
+    ]);
+  }, []);
+  // dummy messages start
+  // ------------------------
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -131,74 +205,60 @@ function ChatContainer({ contact }) {
   };
 
   return (
-    <div
-      style={{
-        width: "80%",
-        padding: "10px",
-        paddingRight: "20px",
-        paddingBottom: "20px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      
-      <div
-        ref={messagesContainerRef}
-        style={{ flexGrow: 0.8, overflowY: "auto" }}
-      >
+    <>
+      <Box ref={messagesContainerRef} className="chat-right-body">
         {messages.map((msg, index) => (
-          <div
+          <Box
             key={index}
-            style={{
+            sx={{
               display: "flex",
               flexDirection: "column",
               alignItems: msg.incoming ? "flex-start" : "flex-end",
-              margin: "10px 0",
+              marginTop: 3,
+              gap: 1,
             }}
           >
             {/* Display the date above the message */}
-            <span
-              style={{
-                fontSize: "0.8em",
-                color: "#a5a5a5",
-                marginBottom: "5px",
-              }}
+            <Typography
+              sx={{ fontSize: 15, fontWeight: 300, color: "#818E94" }}
             >
               {formatDate(msg.createdAt)}
-            </span>
+            </Typography>
 
-            <div
-              style={{
+            <Box
+              sx={{
                 display: "flex",
                 flexDirection: msg.incoming ? "row" : "row-reverse",
                 justifyContent: "flex-start",
-                alignItems: "flex-end",
+                alignItems: "flex-start",
               }}
             >
-              <Avatar>{contact.name[0].toUpperCase()}</Avatar>
+              <Avatar
+                sx={{
+                  fontWeight: 500,
+                  background: "#fff",
+                  color: "primary.main",
+                  border: "1px solid rgba(20, 133, 255, 0.10)",
+                }}
+              >
+                {contact.name[0].toUpperCase()}
+              </Avatar>
               <div
                 style={{
                   marginLeft: msg.incoming ? "10px" : "0",
                   marginRight: msg.incoming ? "0" : "10px",
-                  backgroundColor: msg.incoming ? "#1877f2" : "#e4e6eb",
-                  color: msg.incoming ? "#ffffff" : "#050505",
-                  borderRadius: "20px",
-                  padding: "5px 10px",
+                  backgroundColor: msg.incoming ? "#fff" : "#fff",
+                  color: msg.incoming ? "#001F2B" : "#001F2B",
+                  borderRadius: 10,
+                  padding: "5px 15px",
                   maxWidth: "70%",
                   wordBreak: "break-word",
                 }}
               >
                 {msg.incoming && (
-                  <p
-                    style={{
-                      fontSize: "0.8em",
-                      marginBottom: "2px",
-                      marginTop: "0",
-                    }}
-                  >
-                    <b>{contact.name}</b>
-                  </p>
+                  <Typography color="primary" sx={{ fontWeight: "bold" }}>
+                    {contact.name}
+                  </Typography>
                 )}
                 {/* Check if the message type is image */}
                 {msg.type === "image" ? (
@@ -225,39 +285,61 @@ function ChatContainer({ contact }) {
                     />
                   </a>
                 ) : (
-                  <p style={{ margin: "0" }}>{msg.text}</p>
+                  <Typography sx={{ fontWeight: 300 }}>{msg.text}</Typography>
                 )}
               </div>
-            </div>
-          </div>
+            </Box>
+          </Box>
         ))}
         <div ref={messagesEndRef} />
-      </div>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      </Box>
+
+      <Box className="chat-right-footer">
         {/* Add the emoji button here */}
-        <IconButton onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
-          <span role="img" aria-label="emoji">
-            😀
-          </span>
-        </IconButton>
 
+        {/* my--- */}
         {showEmojiPicker && <Picker data={data} onEmojiSelect={addEmoji} />}
+        <Box className="suggestionBox">
+          <CustomButton2 variant="contained" color="primary2">
+            How are you?
+          </CustomButton2>
+          <CustomButton2 variant="contained" color="primary2">
+            Can we talk now?
+          </CustomButton2>
+          <CustomButton2 variant="contained" color="primary2">
+            Are you available now?
+          </CustomButton2>
+          <CustomButton2 variant="contained" color="primary2">
+            Add New Quick Answer
+          </CustomButton2>
+        </Box>
+        <Box className="chat-input-container">
+          <Box className="chat-input-inner">
+            <InputBase
+              multiline
+              placeholder="Write Here"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <Box className="beside-chat-input">
+              <IconButton onClick={() => setShowEmojiPicker(!showEmojiPicker)}>
+                😀
+              </IconButton>
 
-        <IconButton onClick={handleSendFile}>
-          <AttachFileIcon />
-        </IconButton>
-
-        <TextField
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          fullWidth
-          style={{ flexGrow: 1, marginRight: "10px" }}
-        />
-        <IconButton onClick={handleSendMessage} disabled={!message.trim()}>
-          <SendIcon />
-        </IconButton>
-      </div>
-    </div>
+              <IconButton onClick={handleSendFile}>
+                <AttachFileIcon />
+              </IconButton>
+              <IconButton
+                onClick={handleSendMessage}
+                disabled={!message.trim()}
+              >
+                <SendIcon sx={{ color: "#fff" }} />
+              </IconButton>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </>
   );
 }
 

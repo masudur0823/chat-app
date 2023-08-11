@@ -4,8 +4,10 @@ import ChatContainer from "../components/ChatContainer";
 import ContactDetails from "../components/ContactDetails";
 import http from "../utils/http";
 import { SocketContext } from "../context/SocketContext";
-import { ChatHeader } from "../assets/styles/chat/ChatHeader";
-import { Avatar, Box, Typography } from "@mui/material";
+import { Avatar, Box, Stack, Typography } from "@mui/material";
+import { CustomButton2 } from "../assets/styles/buttons";
+import { StyledBadge } from "../assets/styles/chat";
+import { ChatContainerBox } from "../assets/styles/chat";
 
 function Chat() {
   const [selectedContactId, setSelectedContactId] = useState(null);
@@ -13,7 +15,7 @@ function Chat() {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log("contacts", contacts);
+  // console.log("contacts", contacts);
   const socket = useContext(SocketContext);
 
   const sortContacts = (contactsArray) => {
@@ -141,6 +143,81 @@ function Chat() {
         lastMessageDate: "2/27/2023",
         unreadCount: 5,
       },
+      {
+        id: 5,
+        first_name: "Ermin",
+        last_name: "Chinery",
+        email: "echinery4@amazon.de",
+        phone: "+86 211 366 3817",
+        amount: 642,
+        get name() {
+          return `${this.first_name} ${this.last_name}`;
+        },
+        lastMessage:
+          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+        lastMessageDate: "2/27/2023",
+        unreadCount: 5,
+      },
+      {
+        id: 5,
+        first_name: "Ermin",
+        last_name: "Chinery",
+        email: "echinery4@amazon.de",
+        phone: "+86 211 366 3817",
+        amount: 642,
+        get name() {
+          return `${this.first_name} ${this.last_name}`;
+        },
+        lastMessage:
+          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+        lastMessageDate: "2/27/2023",
+        unreadCount: 5,
+      },
+      {
+        id: 5,
+        first_name: "Ermin",
+        last_name: "Chinery",
+        email: "echinery4@amazon.de",
+        phone: "+86 211 366 3817",
+        amount: 642,
+        get name() {
+          return `${this.first_name} ${this.last_name}`;
+        },
+        lastMessage:
+          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+        lastMessageDate: "2/27/2023",
+        unreadCount: 5,
+      },
+      {
+        id: 5,
+        first_name: "Ermin",
+        last_name: "Chinery",
+        email: "echinery4@amazon.de",
+        phone: "+86 211 366 3817",
+        amount: 642,
+        get name() {
+          return `${this.first_name} ${this.last_name}`;
+        },
+        lastMessage:
+          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+        lastMessageDate: "2/27/2023",
+        unreadCount: 5,
+      },
+      {
+        id: 5,
+        first_name: "Ermin",
+        last_name: "Chinery",
+        email: "echinery4@amazon.de",
+        phone: "+86 211 366 3817",
+        amount: 642,
+        get name() {
+          return `${this.first_name} ${this.last_name}`;
+        },
+        lastMessage:
+          "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.\n\nMorbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.",
+        lastMessageDate: "2/27/2023",
+        unreadCount: 5,
+      },
     ]);
   }, []);
 
@@ -191,36 +268,96 @@ function Chat() {
 
   return (
     <>
-      <ChatHeader>
+      <ChatContainerBox>
         <Box className="chat-left">
-          <Typography color="primary">Chat</Typography>
-        </Box>
-        <Box className="chat-right">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <Avatar  sx={{ width: 65, height: 65 }}>{selectedContact.name[0].toUpperCase()}</Avatar>
-            <h2 style={{ marginLeft: "10px" }}>{selectedContact.name}</h2>
-          </div>
-        </Box>
-      </ChatHeader>
-      <div style={{ display: "flex" }}>
-        <ContactList
-          contacts={contacts}
-          setSelectedContactId={setSelectedContactId}
-          selectedContactId={selectedContactId}
-          setContacts={setContacts}
-          unreadCount={selectedContact ? selectedContact.unreadCount : 0}
-          isLoading={isLoading}
-          loadMoreContacts={() => setCurrentPage((prev) => prev + 1)}
-        />
-        {selectedContact && (
-          <ChatContainer
-            contact={selectedContact}
-            messages={messages}
+          <Box className="chat-left-header">
+            <Typography>Chat</Typography>
+          </Box>
+          <ContactList
+            contacts={contacts}
+            setSelectedContactId={setSelectedContactId}
+            selectedContactId={selectedContactId}
             setContacts={setContacts}
+            unreadCount={selectedContact ? selectedContact.unreadCount : 0}
+            isLoading={isLoading}
+            loadMoreContacts={() => setCurrentPage((prev) => prev + 1)}
           />
+        </Box>
+        {selectedContact && (
+          <Box className="chat-right">
+            <Box className="chat-right-header">
+              {selectedContact && (
+                <Stack
+                  className="chat-header-inner"
+                  direction="row"
+                  justifyContent="space-between"
+                  width="100%"
+                  flexWrap="wrap"
+                >
+                  <Stack direction="row" gap={2} alignItems="flex-start">
+                    <StyledBadge
+                      overlap="circular"
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "right",
+                      }}
+                      variant="dot"
+                    >
+                      <Avatar
+                        sx={{
+                          width: { s_xl: 65 },
+                          height: { s_xl: 65 },
+                          fontWeight: 500,
+                          background: "rgba(20, 133, 255, 0.10)",
+                          color: "primary.main",
+                          border: "1px solid rgba(20, 133, 255, 0.10)",
+                        }}
+                      >
+                        {selectedContact?.name[0].toUpperCase()}
+                      </Avatar>
+                    </StyledBadge>
+                    <Stack gap={1}>
+                      <Typography color="primary" variant="h2">
+                        {selectedContact?.name}
+                      </Typography>
+                      <Stack
+                        direction="row"
+                        gap={{ sm: 2, xs: 1 }}
+                        flexWrap="wrap"
+                      >
+                        <CustomButton2 variant="contained" color="blue">
+                          100 User
+                        </CustomButton2>
+                        <CustomButton2 variant="contained" color="orange">
+                          Urgent
+                        </CustomButton2>
+                        <CustomButton2 variant="contained" color="violet2">
+                          Customer
+                        </CustomButton2>
+                        <CustomButton2 variant="contained" color="primary2">
+                          Add Tag
+                        </CustomButton2>
+                      </Stack>
+                    </Stack>
+                  </Stack>
+                  <Typography color="primary" fontWeight={500}>
+                    Agent
+                  </Typography>
+                </Stack>
+              )}
+            </Box>
+            {selectedContact && (
+              <ChatContainer
+                contact={selectedContact}
+                messages={messages}
+                setContacts={setContacts}
+              />
+            )}
+          </Box>
         )}
-        {/* {selectedContact && <ContactDetails contact={selectedContact} />} */}
-      </div>
+      </ChatContainerBox>
+
+      {/* {selectedContact && <ContactDetails contact={selectedContact} />} */}
     </>
   );
 }
