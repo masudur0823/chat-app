@@ -15,6 +15,7 @@ function ContactList({
   setContacts,
   isLoading,
   loadMoreContacts,
+  setShow
 }) {
   //console.log('contacts list', contacts)
   const [searchTerm, setSearchTerm] = useState("");
@@ -69,6 +70,7 @@ function ContactList({
           setSelectedContactId={setSelectedContactId}
           handleContactClick={handleContactClick}
           isLoading={isLoading}
+          setShow={setShow}
         />,
         <Contacts />,
       ]}
@@ -84,6 +86,7 @@ function Conversation({
   setSelectedContactId,
   handleContactClick,
   isLoading,
+  setShow
 }) {
   return (
     <>
@@ -93,6 +96,7 @@ function Conversation({
             <ContactCard
               key={index}
               onClick={() => {
+                setShow(1);
                 setSelectedContactId(contact.id);
                 handleContactClick(contact.id);
               }}

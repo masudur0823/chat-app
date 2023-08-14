@@ -4,7 +4,7 @@ import ChatContainer from "../components/ChatContainer";
 import ContactDetails from "../components/ContactDetails";
 import http from "../utils/http";
 import { SocketContext } from "../context/SocketContext";
-import { Avatar, Box, Stack, Typography } from "@mui/material";
+import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
 import { CustomButton2 } from "../assets/styles/buttons";
 import { StyledBadge } from "../assets/styles/chat";
 import { ChatContainerBox } from "../assets/styles/chat";
@@ -14,6 +14,7 @@ function Chat() {
   const [contacts, setContacts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [show, setShow] = useState(0);
 
   // console.log("contacts", contacts);
   const socket = useContext(SocketContext);
@@ -179,10 +180,9 @@ function Chat() {
     (contact) => contact.id === selectedContactId
   );
   const messages = selectedContact ? selectedContact.messages : [];
-
   return (
     <>
-      <ChatContainerBox>
+      <ChatContainerBox show={show} selectedContact={selectedContact}>
         <Box className="chat-left">
           <Box className="chat-left-header">
             <Typography>Chat</Typography>
@@ -195,20 +195,28 @@ function Chat() {
             unreadCount={selectedContact ? selectedContact.unreadCount : 0}
             isLoading={isLoading}
             loadMoreContacts={() => setCurrentPage((prev) => prev + 1)}
+            setShow={setShow}
           />
         </Box>
+
         {selectedContact && (
           <Box className="chat-right">
             <Box className="chat-right-header">
-              {selectedContact && (
+              <Stack
+                className="chat-header-inner"
+                direction="row"
+                justifyContent="space-between"
+                width="100%"
+                flexWrap="wrap"
+              >
                 <Stack
-                  className="chat-header-inner"
                   direction="row"
-                  justifyContent="space-between"
-                  width="100%"
-                  flexWrap="wrap"
+                  gap={2}
+                  alignItems="flex-start"
+                  sx={{ width: "100%" }}
                 >
-                  <Stack direction="row" gap={2} alignItems="flex-start">
+                  <Stack direction="row" alignItems="center" gap={1}>
+                    <IconButton onClick={() => setShow(0)}>{"<"}</IconButton>
                     <StyledBadge
                       overlap="circular"
                       anchorOrigin={{
@@ -230,43 +238,47 @@ function Chat() {
                         {selectedContact?.name[0].toUpperCase()}
                       </Avatar>
                     </StyledBadge>
-                    <Stack gap={1}>
-                      <Typography color="primary" variant="h2">
-                        {selectedContact?.name}
-                      </Typography>
-                      <Stack
-                        direction="row"
-                        gap={{ sm: 2, xs: 1 }}
-                        flexWrap="wrap"
+                  </Stack>
+                  <Stack gap={1} sx={{ width: "100%" }}>
+                    <Typography color="primary" variant="h2">
+                      {selectedContact?.name}{" "}
+                      <Typography
+                        component="span"
+                        color="primary"
+                        fontWeight={500}
+                        sx={{ float: "right" }}
                       >
-                        <CustomButton2 variant="contained" color="blue">
-                          100 User
-                        </CustomButton2>
-                        <CustomButton2 variant="contained" color="orange">
-                          Urgent
-                        </CustomButton2>
-                        <CustomButton2 variant="contained" color="violet2">
-                          Customer
-                        </CustomButton2>
-                        <CustomButton2 variant="contained" color="primary2">
-                          Add Tag
-                        </CustomButton2>
-                      </Stack>
+                        Agent
+                      </Typography>
+                    </Typography>
+                    <Stack
+                      direction="row"
+                      gap={{ sm: 2, xs: 1 }}
+                      flexWrap="wrap"
+                    >
+                      <CustomButton2 variant="contained" color="blue">
+                        100 User
+                      </CustomButton2>
+                      <CustomButton2 variant="contained" color="orange">
+                        Urgent
+                      </CustomButton2>
+                      <CustomButton2 variant="contained" color="violet2">
+                        Customer
+                      </CustomButton2>
+                      <CustomButton2 variant="contained" color="primary2">
+                        Add Tag
+                      </CustomButton2>
                     </Stack>
                   </Stack>
-                  <Typography color="primary" fontWeight={500}>
-                    Agent
-                  </Typography>
                 </Stack>
-              )}
+              </Stack>
             </Box>
-            {selectedContact && (
-              <ChatContainer
-                contact={selectedContact}
-                messages={messages}
-                setContacts={setContacts}
-              />
-            )}
+
+            <ChatContainer
+              contact={selectedContact}
+              messages={messages}
+              setContacts={setContacts}
+            />
           </Box>
         )}
       </ChatContainerBox>

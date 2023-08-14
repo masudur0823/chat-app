@@ -291,7 +291,9 @@ function ChatContainer({ contact }) {
         {/* Add the emoji button here */}
 
         {/* my--- */}
+
         {showEmojiPicker && <Picker data={data} onEmojiSelect={addEmoji} />}
+
         <Box className="suggestionBox">
           <CustomButton2 variant="contained" color="primary2">
             How are you?
@@ -306,6 +308,7 @@ function ChatContainer({ contact }) {
             Add New Quick Answer
           </CustomButton2>
         </Box>
+
         <Box className="chat-input-container">
           <Box className="chat-input-inner">
             <InputBase
@@ -331,6 +334,7 @@ function ChatContainer({ contact }) {
             </Box>
           </Box>
         </Box>
+        
       </Box>
     </>
   );

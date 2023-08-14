@@ -1,6 +1,6 @@
 import { Badge, Box, styled } from "@mui/material";
 
-export const ChatContainerBox = styled(Box)(({ theme }) => ({
+export const ChatContainerBox = styled(Box)(({ theme, show }) => ({
   display: "flex",
   width: "100%",
   ".chat-left": {
@@ -193,6 +193,15 @@ export const ChatContainerBox = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
+    ".chat-left": {
+      display: show === 0 ? "block" : "none",
+    },
+    ".chat-right": {
+      display: show === 1 ? "flex" : "none",
+      // "& .chat-right-header":{
+      //   "&"
+      // }
+    },
   },
 
   [theme.breakpoints.down("s_md")]: {
