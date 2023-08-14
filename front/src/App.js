@@ -103,13 +103,13 @@ function App() {
             <Routes>
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
-              <Route element={<ChatLayout />}>
+              {/* <Route element={<ChatLayout />}>
                 <Route
                   path="/"
                   element={<PrivateWrapper element={<Chat />} />}
                 />
-              </Route>
-              <Route element={<Layout />}>
+              </Route> */}
+              {/* <Route element={<Layout />}>
                 <Route
                   path="/settings"
                   element={<PrivateWrapper element={<Settings />} />}
@@ -118,16 +118,16 @@ function App() {
                   path="/contacts"
                   element={<PrivateWrapper element={<Contacts />} />}
                 />
-              </Route>
-              {/* <Route element={<ChatLayout />}>
-                <Route index path="/" element={<Chat />} />
               </Route> */}
 
-              {/* <Route element={<Layout />}>
+              <Route element={<ChatLayout />}>
+                <Route index path="/" element={<Chat />} />
+              </Route>
+              <Route element={<Layout />}>
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/contacts" s element={<Contacts />} />
                 <Route path="/integrations" element={<Integrations />} />
-              </Route> */}
+              </Route>
 
               <Route
                 path="/numbers"
@@ -135,13 +135,13 @@ function App() {
                   <PrivateWrapper element={<Numbers />} requiredRole="admin" />
                 }
               />
-              <Route element={<Layout />}>
+              {/* <Route element={<Layout />}>
                 <Route
                   path="/integrations"
                   element={<PrivateWrapper element={<Integrations />} />}
                 />
-              </Route>
-              {/* <Route path="/integrations" element={<Integrations />} /> */}
+              </Route> */}
+              <Route path="/integrations" element={<Integrations />} />
 
               <Route
                 path="/templates"
