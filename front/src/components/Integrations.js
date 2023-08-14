@@ -21,7 +21,7 @@ const Integrations = () => {
             try {
                 const response = await http.get('/integrations');
                 if (response.data && response.data.length > 0) {
-                    const updatedIntegrations = defaultIntegrations.map(defaultInt => {
+                    const updatedIntegrations = defaultIntegrations?.map(defaultInt => {
                         const fetchedInt = response.data.find(int => int.name === defaultInt.name);
                         return fetchedInt || defaultInt;
                     });

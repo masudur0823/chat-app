@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 function Templates() {
   const [templates, setTemplates] = useState([]);
-  const [dialogOpen, setDialogOpen] = useState(false);
+  // const [dialogOpen, setDialogOpen] = useState(false);
   const [newDialogOpen, setNewDialogOpen] = useState(false);
   const [newTemplate, setNewTemplate] = useState({
     name: '',

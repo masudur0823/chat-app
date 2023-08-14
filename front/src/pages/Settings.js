@@ -3,7 +3,6 @@ import http from "../utils/http";
 import {
   Switch,
   Button,
-  FormControlLabel,
   FormControl,
   InputLabel,
   Select,

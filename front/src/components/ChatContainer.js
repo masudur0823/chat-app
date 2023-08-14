@@ -1,13 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import {
-  TextField,
-  IconButton,
-  Avatar,
-  Box,
-  Button,
-  InputBase,
-  Typography,
-} from "@mui/material";
+import { IconButton, Avatar, Box, InputBase, Typography } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import http from "../utils/http";
@@ -334,7 +326,6 @@ function ChatContainer({ contact }) {
             </Box>
           </Box>
         </Box>
-        
       </Box>
     </>
   );

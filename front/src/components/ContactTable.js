@@ -35,15 +35,15 @@ function ContactTable({
     onDelete(contactId);
   };
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  // const handleChangePage = (event, newPage) => {
+  //   setPage(newPage);
+  // };
 
-  const handleChangeRowsPerPage = (event) => {
-    setPage(1);
-    // Update pageSize state in parent component
-    // This could also reload the data if needed
-  };
+  // const handleChangeRowsPerPage = (event) => {
+  //   setPage(1);
+  //   // Update pageSize state in parent component
+  //   // This could also reload the data if needed
+  // };
 
   // pagination -------------------------
   // -----------------------------------

@@ -1,6 +1,6 @@
 import React from 'react';
 import http from '../utils/http';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import { useState, useEffect, useContext  } from 'react';
 import { Dialog, DialogTitle, DialogContent, TextField, Button, DialogActions, CircularProgress } from '@mui/material';
 import { SocketContext } from '../context/SocketContext'; // make sure the path is correct
