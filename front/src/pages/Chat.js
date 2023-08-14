@@ -216,7 +216,12 @@ function Chat() {
                   sx={{ width: "100%" }}
                 >
                   <Stack direction="row" alignItems="center" gap={1}>
-                    <IconButton onClick={() => setShow(0)}>{"<"}</IconButton>
+                    <IconButton
+                      sx={{ display: { md: "none" } }}
+                      onClick={() => setShow(0)}
+                    >
+                      {"<"}
+                    </IconButton>
                     <StyledBadge
                       overlap="circular"
                       anchorOrigin={{
