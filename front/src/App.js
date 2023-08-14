@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
   Navigate,
 } from "react-router-dom";
 import Chat from "./pages/Chat";
@@ -13,10 +12,6 @@ import Numbers from "./pages/Numbers";
 import NewnumberUnofficial from "./components/NewnumberUnofficial";
 import { ContactProvider } from "./context/ContactContext";
 
-import { Drawer, List, ListItem, ListItemText } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
-import IconButton from "@mui/material/IconButton";
 import { useToken } from "./utils/useToken";
 import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
@@ -52,6 +47,8 @@ const socket = io("http://localhost:3000");
 function App() {
   const [isAuthenticated, setAuthenticated] = useState(!!useToken());
   const [userRole, setUserRole] = useState(null);
+
+  console.log(userRole)
 
   /*
    // Create the socket connection here

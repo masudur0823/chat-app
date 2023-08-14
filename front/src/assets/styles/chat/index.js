@@ -199,7 +199,7 @@ export const ChatContainerBox = styled(Box)(({ theme, show }) => ({
     ".chat-right": {
       display: show === 1 ? "flex" : "none",
       // "& .chat-right-header":{
-      //   "&"
+      //   display:'none'
       // }
     },
   },

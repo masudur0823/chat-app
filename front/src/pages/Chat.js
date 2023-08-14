@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import ContactList from "../components/ContactList";
 import ChatContainer from "../components/ChatContainer";
-import ContactDetails from "../components/ContactDetails";
+// import ContactDetails from "../components/ContactDetails";
 import http from "../utils/http";
 import { SocketContext } from "../context/SocketContext";
 import { Avatar, Box, IconButton, Stack, Typography } from "@mui/material";
@@ -212,7 +212,7 @@ function Chat() {
                 <Stack
                   direction="row"
                   gap={2}
-                  alignItems="flex-start"
+                  alignItems="center"
                   sx={{ width: "100%" }}
                 >
                   <Stack direction="row" alignItems="center" gap={1}>
@@ -253,8 +253,14 @@ function Chat() {
                     </Typography>
                     <Stack
                       direction="row"
-                      gap={{ sm: 2, xs: 1 }}
                       flexWrap="wrap"
+                      sx={{
+                        display: {
+                          sm: "flex",
+                          xs: "none",
+                        },
+                        gap: { sm: 2, xs: 1 },
+                      }}
                     >
                       <CustomButton2 variant="contained" color="blue">
                         100 User

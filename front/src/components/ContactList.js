@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Badge, Avatar, Typography, Box, Stack } from "@mui/material";
-import { ContactListBox, StyledBadge } from "../assets/styles/chat";
+import {  StyledBadge } from "../assets/styles/chat";
 import CustomTabs from "./CustomTabs";
 import {
   ContactCard,
